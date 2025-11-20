@@ -1,0 +1,255 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+//creates a hospital appointment and cost system
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+    //creates variables
+    int service, appointment_day, appointment_hour;
+    char referral;
+    double base_cost = 0, surcharge_cost = 0, total = 0;
+    string slot_time;
+    
+        //asks what service they need and gets input
+        cout<<"Enter service type (1=general, 2=Emergency, 3=specialist): ";
+        cin>>service;
+        
+        //asks for day 
+        cout<<"Enter Appontment Day (1=Monday.....7=Sunday): ";
+        cin>>appointment_day;
+        
+        //asks for appointment hour
+        cout<<"In what hour of the day is your appointment (0....23): ";
+        cin>>appointment_hour;
+        
+            //creates if else statement with switch
+            if(service == 1)
+            {
+                base_cost = 80;
+                
+                //weekend price
+                if(appointment_day == 6 || appointment_day == 7)
+                {
+                    surcharge_cost = surcharge_cost + 20;
+                }
+                
+                //decides when next appointement time is
+                if(appointment_hour < 9)
+                {
+                    string day_text = "??";
+                    switch(appointment_day)
+                    {
+                        case 1: day_text = "Mon";
+                                break;
+                        case 2: day_text = "Tue";
+                                break;
+                        case 3: day_text = "Wed";
+                                break;
+                        case 4: day_text = "Thu";
+                                break;
+                        case 5: day_text = "Fri";
+                                break;
+                        case 6: day_text = "Sat";
+                                break;
+                        case 7: day_text = "Sun";
+                                break;
+                        default: day_text = "??";
+                                    break;
+                    }
+                    slot_time = day_text + " 09:00";
+                }
+                else if(appointment_hour >= 9 && appointment_hour < 17)
+                {
+                    string day_text = "??";
+                    switch(appointment_day)
+                    {
+                        case 1: day_text = "Mon";
+                                break;
+                        case 2: day_text = "Tue";
+                                break;
+                        case 3: day_text = "Wed";
+                                break;
+                        case 4: day_text = "Thu";
+                                break;
+                        case 5: day_text = "Fri";
+                                break;
+                        case 6: day_text = "Sat";
+                                break;
+                        case 7: day_text = "Sun";
+                                break;
+                        default: day_text = "??";
+                                    break;
+                    }
+                    
+                    slot_time = day_text + " " + to_string(appointment_hour + 1) + ":00";
+                }
+                else
+                {
+                    int next_day = (appointment_day % 7) + 1;
+                    string day_text = "??";
+                    
+                    switch(next_day)
+                    {
+                        case 1: day_text = "Mon";
+                                break;
+                        case 2: day_text = "Tue";
+                                break;
+                        case 3: day_text = "Wed";
+                                break;
+                        case 4: day_text = "Thu";
+                                break;
+                        case 5: day_text = "Fri";
+                                break;
+                        case 6: day_text = "Sat";
+                                break;
+                        case 7: day_text = "Sun";
+                                break;
+                        default: day_text = "??";
+                                    break;
+                    }
+                    
+                    slot_time = day_text + " 09:00";
+                }
+            }
+            else if (service == 2)
+            {
+                base_cost = 250;
+                
+                if(appointment_hour >= 22 || appointment_hour < 6)
+                {
+                    surcharge_cost = surcharge_cost + 50;
+                }
+                
+                slot_time = "Immediate";
+            }
+            else if(service == 3)
+            {
+                base_cost = 150;
+                
+                cout<<"do you have a referral? (Y/N): ";
+                cin>>referral;
+                
+                if(referral == 'N' || referral == 'n')
+                {
+                    surcharge_cost = surcharge_cost + 40;
+                }
+                
+                if(appointment_day == 6 || appointment_day == 7)
+                {
+                    slot_time = "Mon 10:00";
+                }
+                else
+                {
+                    if(appointment_hour < 10)
+                    {
+                        string day_text = "??";
+                        
+                        switch(appointment_day)
+                        {
+                        case 1: day_text = "Mon";
+                                break;
+                        case 2: day_text = "Tue";
+                                break;
+                        case 3: day_text = "Wed";
+                                break;
+                        case 4: day_text = "Thu";
+                                break;
+                        case 5: day_text = "Fri";
+                                break;
+                        case 6: day_text = "Sat";
+                                break;
+                        case 7: day_text = "Sun";
+                                break;
+                        default: day_text = "??";
+                                    break;
+                        }
+                        
+                        slot_time = day_text + " 10:00";
+                    }
+                    else if(appointment_hour >= 10 && appointment_hour <16)
+                    {
+                        string day_text = "??";
+                        
+                        switch(appointment_day)
+                        {
+                        case 1: day_text = "Mon";
+                                break;
+                        case 2: day_text = "Tue";
+                                break;
+                        case 3: day_text = "Wed";
+                                break;
+                        case 4: day_text = "Thu";
+                                break;
+                        case 5: day_text = "Fri";
+                                break;
+                        case 6: day_text = "Sat";
+                                break;
+                        case 7: day_text = "Sun";
+                                break;
+                        default: day_text = "??";
+                                    break;
+                        }
+                        
+                        slot_time = day_text + " " + to_string(appointment_hour + 1) + ":00";
+                    }
+                    else
+                    {
+                        int next_day = (appointment_day % 7) + 1;
+                        
+                        if(next_day == 6 || next_day == 7)
+                        {
+                            next_day = 1;
+                        }
+                        
+                        string day_text = "??";
+                        
+                        switch(appointment_day)
+                        {
+                        case 1: day_text = "Mon";
+                                break;
+                        case 2: day_text = "Tue";
+                                break;
+                        case 3: day_text = "Wed";
+                                break;
+                        case 4: day_text = "Thu";
+                                break;
+                        case 5: day_text = "Fri";
+                                break;
+                        case 6: day_text = "Sat";
+                                break;
+                        case 7: day_text = "Sun";
+                                break;
+                        default: day_text = "??";
+                                    break;
+                        }
+                        
+                        slot_time = day_text + " 10:00";
+                    }
+                }
+            }
+            else
+            {
+                cout<<"invalid service type"<<endl;
+                return 0;
+            }
+            
+            total = base_cost + surcharge_cost;
+            
+            cout<<"\n--- Appointment Summary ---"<<endl;
+            cout<<"base cost   : $"<<base_cost<<endl;
+            cout<<"surcharge   : $"<<surcharge_cost<<endl;
+            cout<<"total cost  : $"<<total<<endl;
+            cout<<"next slot   : "<<slot_time<<endl;
+        
+        
+        return 0;
+}
