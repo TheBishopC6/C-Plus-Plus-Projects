@@ -1,3 +1,5 @@
+//Created By TheBishopC6
+//Conducts a test to check user typing speed and percentage correct
 #include <iostream>
 #include <ctime>
 #include <string>
