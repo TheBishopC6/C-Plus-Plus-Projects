@@ -1,3 +1,5 @@
+//Created By TheBishopC6
+//Calculator for a stmart transit card system with a recharge function, zone function, and hour function
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -204,4 +206,5 @@ int main()
     } while (choice != 7);
 
 return 0;
+
 }
