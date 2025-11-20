@@ -1,10 +1,4 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
+//created by TheBishopC6
 //creates a hospital appointment and cost system
 #include <iostream>
 #include <iomanip>
